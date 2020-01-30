@@ -1,10 +1,8 @@
 $(document).ready(function () {
-  var apiKey = 'de94f81ce9ab4cb4ba49ea8a87181ff9';
+  var apiKey = 'b4fba642a06e4566a8c81148feec47ac';
 
-  //Get recipe ID
   var id = getParameterByName("id", window.location.href);
   var url = `https://api.spoonacular.com/recipes/`;
-
   $.ajax({
     url: url + id + "/information" + "?includeNutrition=true&apiKey=" + apiKey,
     contentType: 'application/json',
@@ -17,66 +15,76 @@ $(document).ready(function () {
     var instructionReplace = instruction.replace(/ +(?= )/g, '');
     var instructionArr = instructionReplace.split('.');
 
+
     elements = `  
-        <h1 class="my-4">${recipe.title}</h1>
-    
-        <div class="row">
-          <div class="col-md-8">
+      <div class="row" id="titel">
+        <a href="../innovation" style="margin-top: 30px;">
+          <img alt="Home" src="assets/home.png">
+        </a>
+        <div class="title">
+          <h1 class="my-4">${recipe.title}</h1>
+        </div>
+      </div>
+        <div class="row" id="info">
+          <div class="col">
             <div class="row">
-              <h3 class="my-3">Information</h3>
-              <ul>
+              <h3 class="my-3">Information: </h3>
+              <ul style="margin-top: 1.5rem;">
                 <li>Servings: ${recipe.servings}</li>
                 <li>Time: ${recipe.readyInMinutes} min</li>
               </ul>
             </div>
             
           </div>
-          <div class="col-md-3">
-            <h3 class="my-3">Calorieën</h3>
-            <ul>
-              <li>Protein: ${recipe.nutrition.caloricBreakdown.percentProtein}%</li>
-              <li>Fat: ${recipe.nutrition.caloricBreakdown.percentFat}%</li>
-              <li>Carbs: ${recipe.nutrition.caloricBreakdown.percentCarbs}%</li>
-            </ul>
+          <div class="col">
+            <div class="row">
+              <h3 class="my-3">Calories:</h3>
+              <ul style="margin-top: 1.5rem;">
+                <li>Protein: ${recipe.nutrition.caloricBreakdown.percentProtein}%</li>
+                <li>Fat: ${recipe.nutrition.caloricBreakdown.percentFat}%</li>
+                <li>Carbs: ${recipe.nutrition.caloricBreakdown.percentCarbs}%</li>
+              </ul>
+            </div
           </div>
+          </div>
+          <div class="w-100"></div>
         </div>
 
         <div class="row">
-    
-          <div class="col-md-8">
+          <div class="col">
             <img class="img-fluid" src="${recipe.image}" alt="${recipe.title}">
           </div>
 
-          <div class="col-md-3">
-            <h3 class="my-3">Ingredients</h3>
+          <div class="col">
+            <h3 class="my-3">Ingredients:</h3>
             <ul>`
-    recipe.extendedIngredients.forEach(i => {
-      elements += "<li>" + i.original + "</li>"
-    });
-    elements += `</ul>
+              recipe.extendedIngredients.forEach(i => {
+              elements += "<li>" + i.original + "</li>"
+              });
+              elements += `</ul>
             
           </div>
+          <div class="w-100"></div>
+        </div>
   
-          <div class="col-md-8">
+        <div class="row">
+          <div class="col">
             <h3 class="my-3">Instructions</h3>
             <ul>`
-    for (let i = 0; i < instructionArr.length - 1; i++) {
-      elements += "<li>" + instructionArr[i] + "</li>"
-    }
-    // instructionArr.forEach(i => {
-    //  elements += "<li>" + i + "</li>"
-    // });
-    elements += `</ul>   
-            </div>
-  
+              for (let i = 0; i < instructionArr.length -1; i++) {
+                elements += "<li>" + instructionArr[i] + "</li>"
+              }
+              elements += `</ul>   
+          </div>
+          <div class="w-100"></div>
+        </div>
           `;
-    $("#containerInfo").append(elements);
+        $("#containerInfo").append(elements);
   });
 
-  //Get similar recipes
-  var url2 = "https://api.spoonacular.com/recipes/";
+  var urltwee = "https://api.spoonacular.com/recipes/";
   $.ajax({
-    url: url2 + id + "/similar" + "?number=3&apiKey=" + apiKey,
+    url: urltwee + id + "/similar" + "?number=3&apiKey=" + apiKey,
     contentType: 'application/json',
     dataType: 'json',
     context: document.body
@@ -88,9 +96,6 @@ $(document).ready(function () {
        <img class="card-img-top" src="https://spoonacular.com/recipeImages/${r.image}" alt="${r.title}" style="height: 200px;">
        <div class="card-block">
           <p class="recipeTitle" class="card-text">${r.title}</p>
-          `
-      console.log(r.id);
-      elements += `
           <a href="details.html?id=${r.id}" class="btn btn-outline-primary btn-lg btn-block">Get more information</a>
         </div>
       </div>`
