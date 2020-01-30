@@ -2,31 +2,11 @@ $(document).ready(function () {
   //TODO: remove init code
   var apiKey = 'de94f81ce9ab4cb4ba49ea8a87181ff9';
 
-  var json = {
-    "imageUrl": "http://dtsl.ehb.be/~willem-jan.pattyn/Innovation%20week/upload/image-5e3190aee21b7.jpg"
-  }
+  // var json = {
+  //   "imageUrl": "http://dtsl.ehb.be/~willem-jan.pattyn/Innovation%20week/upload/image-5e3190aee21b7.jpg"
+  // }
 
-  $.ajax({
-    type: "post",
-    url: "http://localhost:8080/test/image",
-    data: JSON.stringify(json),
-    contentType: 'application/json',
-    dataType: "json",
-    success: function (response) {
-      console.log(response);
-      if (response != 0) {
-        console.log('file sent');
-
-        //Receive input from API and show recipes
-        getRecipes(response);
-      } else {
-        alert('file not sent');
-      }
-    },
-    failure: function(e){
-      console.log(e);
-    }
-  });
+  
 
   // var url = "https://api.spoonacular.com/recipes/findByIngredients";
   // $.ajax({
@@ -78,7 +58,7 @@ $(document).ready(function () {
           $("#uploadedImage").attr("src", response);
 
           var json = {
-            imageUrl: imageUrl
+            "imageUrl": imageUrl
           }
           //Send image to our API
           sendImage(json);
@@ -91,20 +71,24 @@ $(document).ready(function () {
     function sendImage(json) {
       console.log("sending image...");
       $.ajax({
-        url: '10.3.22.7:5005',
-        type: 'post',
-        data: json,
-        dataType: 'json',
+        type: "post",
+        url: "http://localhost:8080/test/image",
+        data: JSON.stringify(json),
+        contentType: 'application/json',
+        dataType: "json",
         success: function (response) {
           console.log(response);
           if (response != 0) {
             console.log('file sent');
-
+    
             //Receive input from API and show recipes
             getRecipes(response);
           } else {
             alert('file not sent');
           }
+        },
+        failure: function(e){
+          console.log(e);
         }
       });
     }
@@ -112,8 +96,6 @@ $(document).ready(function () {
     function getRecipes(response) {
       //TODO: receive input from API and show recipes
       console.log(response);
-
-      
 
       //PLACEHOLDER
       var url = "https://api.spoonacular.com/recipes/findByIngredients";
