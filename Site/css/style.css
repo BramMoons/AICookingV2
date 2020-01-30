@@ -3,11 +3,18 @@
     font-weight: bold;
     font-style: italic;
     margin-bottom: 30px;
-    ;
+    text-align: center;
+}
+.card-text{
+    text-align: center;
+}
+.recipeTitle{
+    text-align: center;
 }
 
 .card-missing {
     margin-bottom: 0px;
+    text-align: center;
 }
 
 .btn-outline-primary {
@@ -32,6 +39,24 @@ h1 {
     margin-bottom: 20px;
 }
 
+#titel{
+    background-color: teal;
+    color: white;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left:20px;
+    padding-right: 20px;
+}
+
+#afb{
+    margin: 10px;
+    padding-top: 50px;
+}
+
+.title{
+    text-align: center;
+}
+
 #fileUpload {
     background-color: teal;
     border-color: teal;
@@ -45,4 +70,13 @@ h1 {
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+
+#info{
+    border-bottom: 2px solid teal;
+    margin-bottom: 10px;
+}
+
+#uploadedImage{
+    width:25%;
 }
