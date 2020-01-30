@@ -1,0 +1,20 @@
+#content {
+    margin: auto;
+    width: 75%
+}
+#content h1 {
+    width: 35%;
+    margin: auto;
+}
+
+.rightSide {
+    background-color: lightblue;
+    width: 50%;
+    float: right;
+}
+
+.leftSide {
+    background-color: lightgray;
+    float: left;
+    width: 50%;
+}

@@ -1,0 +1,48 @@
+.card-missingIng {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 30px;
+    ;
+}
+
+.card-missing {
+    margin-bottom: 0px;
+}
+
+.btn-outline-primary {
+    border-color: teal;
+    color: teal;
+}
+
+.btn-outline-primary:hover {
+    background-color: teal;
+    border-color: teal;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px;
+}
+
+.wrapper {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+#fileUpload {
+    background-color: teal;
+    border-color: teal;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}

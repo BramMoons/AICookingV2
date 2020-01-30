@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Management JSON validation</title>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="content">
+    <h1>User Management</h1>
+    <div class="leftSide">
+        <div>
+            <button onclick="initDB()" >initDB</button>
+            <button onclick="findAllUsers()" >FindAll</button>
+        </div>
+        <br />
+        <div>
+            <input id="inputFindId" type="number" placeholder="1" />
+            <button onclick="findById()">FindById</button>
+        </div>
+        <br />
+        <div>
+            <input id="inputSearch" onkeyup="findBySearch()" type="text" placeholder="Search Term" />
+        </div>
+        <br />
+        <div id="createUserForm">
+            <input id="inputUpdateId" type="number" hidden="true" placeholder="1" />
+            <input id="inputFname" type="text" placeholder="first name" minlength="2" maxlength="25" />
+            <input id="inputLname" type="text" placeholder="last name" minlength="2" maxlength="25" />
+            <input id="inputEmail" type="email" placeholder="email" />
+            <input id="inputPassword" type="password" placeholder="password" minlength="8" maxlength="16" />
+            <button onclick="createOrUpdate()">CreateOrUpdate</button>
+        </div>
+        <br />
+        <div>
+            <input id="inputDeleteId" type="number" placeholder="1" />
+            <button onclick="deleteById()">DeleteById</button>
+        </div>
+    </div>
+
+    <div class="rightSide">
+        <table border="1">
+            <thead>
+            <th>action</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+<script src="index.js" type="text/javascript"></script>
+</body>
+</html>
